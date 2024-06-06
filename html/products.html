@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<header>
+   <h2>Electronics</h2>
+</header>
+<main>
+    <div id="product-list"></div>
+</main>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 E-commerce Website</p>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    for(var i = 0; i< 20; i++){
+        document.getElementById("product-list").innerHTML += ` <div class="product-item">
+            <img src="https://via.placeholder.com/150" alt="Product 1">
+            <h3>Product ${i + 1}</h3>
+            <p>Description for product 1</p>
+            <p>$10</p>
+            <button>Add to Cart</button>
+        </div>`
+    }
+</script>
+</body>
+</html>
