@@ -25,17 +25,23 @@
         <h1>Register</h1>
     </header>
     <main>
-        <form id="register-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <form id="register-form" action="./login.html" method="get">
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" name="register-username" required>
+            <span id="register-username-validation"></span>
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="register-password" required>
+            <span id="register-password-validation"></span>
+            <label for="register-confirm-password">Confirm Password:</label>
+            <input type="password" id="register-confirm-password" name="register-confirm-password" required>
+            <span id="register-confirm-password-validation"></span>
             <button type="submit">Register</button>
         </form>
     </main>
     <footer>
         <p>&copy; 2024 E-commerce Website</p>
     </footer>
+    <script src="../js/register.js"></script>
 </body>
 
 </html>

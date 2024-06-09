@@ -297,10 +297,12 @@ footer {
 
 /* Auth, form style */
 form {
-    max-width: 400px;
+    max-width: 25%;
     margin: auto;
+    margin-top: 8%;
     background: white;
     padding: 2rem;
+    padding-right: 3.5rem;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -309,25 +311,59 @@ form label,
 form input,
 form button {
     display: block;
-    width: 100%;
-    margin: 0.5rem 0;
+    font-weight: bold;
+
 }
 
+
 form input {
-    padding: 0.5rem;
+    padding: 0.7rem;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin: 0.5rem 0;
+    width: 100%;
 }
 
 form button {
     padding: 0.5rem;
     background-color: #5cb85c;
     color: white;
+    font-size: large;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+
+}
+
+form>span {
+    color: red;
+    font-weight: bold;
+    display: block;
+    font-size: small;
+    margin-bottom: 0.5rem;
 }
 
 form button:hover {
     background-color: #4cae4c;
+}
+
+form a {
+    text-align: center;
+    display: inline;
+    text-decoration: underline;
+    margin-left: 0.5rem;
+    color: #00313F;
+    font-weight: bold;
+}
+
+form a:hover {
+    color: #5cb85c;
+}
+
+#register-text {
+    color: black;
+    font-size: medium;
 }

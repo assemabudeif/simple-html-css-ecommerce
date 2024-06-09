@@ -25,9 +25,10 @@
         <img src="images/logo.jpeg" alt="Logo">
         <nav>
             <a href="#" class="page-link">Home</a>
-            <a href="html/login.html" class="page-link">Login</a>
-            <a href="html/register.html" class="page-link">Register</a>
+            <a href="html/login.html" class="page-link" id="login-button">Login</a>
+            <a href="html/register.html" class="page-link" id="register-button">Register</a>
             <a href="html/cart.html" class="page-link">Cart</a>
+            <a class="page-link" id="logout-button">Logout</a>
         </nav>
         <div class="search-bar">
             <input id="searchValue" type="search" placeholder="Search for products...">
@@ -35,6 +36,7 @@
         </div>
     </header>
     <main>
+        <h2 id="username" style="font-size: 1.5rem; color: #333; margin: 1rem 0; margin-bottom: 3rem;"></h2>
         <h2>Categories</h2>
         <div id="categories">
         </div>
@@ -56,9 +58,8 @@
         <div class="footer-content">
             <p>&copy; 2024 E-commerce Website</p>
             <div class="footer-links">
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
+                <a href="https://www.freeprivacypolicy.com/live/d214633d-3ea1-43c3-9e85-c39f7dad3376"
+                    target="_blank">Privacy Policy</a>
             </div>
         </div>
     </footer>

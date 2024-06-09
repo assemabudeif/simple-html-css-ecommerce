@@ -25,17 +25,25 @@
         <h1>Login</h1>
     </header>
     <main>
-        <form id="login-form">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+        <form id="login-form" action="../index.html">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" name="login-username" required>
+            <span id="login-username-validation"></span>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password" required>
+            <span id="login-password-validation"></span>
             <button type="submit">Login</button>
+            <p id="register-text">
+                if you don't have account
+                <a href="./register.html">Register</a>
+            </p>
+
         </form>
     </main>
     <footer>
         <p>&copy; 2024 E-commerce Website</p>
     </footer>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

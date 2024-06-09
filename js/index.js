@@ -1,3 +1,18 @@
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let loginButton = document.getElementById("login-button");
+let logoutButton = document.getElementById("logout-button");
+let registerButton = document.getElementById("register-button");
+
+if (currentUser) {
+    loginButton.style.display = "none";
+    registerButton.style.display = "none";
+    logoutButton.style.display = "inline";
+    document.getElementById("username").innerHTML = `Welcome ${currentUser.username}`;
+} else {
+    loginButton.style.display = "inline";
+    registerButton.style.display = "inline";
+    logoutButton.style.display = "none";
+}
 /**
  * Fetch the products from the fakestoreapi
  * Add the products to the product list
@@ -204,3 +219,13 @@ getAllCategories().then(data => {
     }
 });
 
+/**
+ * Event Listeners
+ * Logout the user
+ * */
+
+document.getElementById("logout-button").addEventListener("click", function () {
+    localStorage.removeItem("currentUser");
+    location.reload();
+}
+);
