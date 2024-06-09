@@ -1,4 +1,6 @@
 let category = localStorage.getItem("category");
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
 let allProducts = [];
 document.getElementById("category-title").innerText = category.toUpperCase();
 
@@ -60,23 +62,27 @@ function addProductItem(product) {
  * Cart is stored in the local storage
  * */
 function addCart(product) {
-    let cartList = localStorage.getItem("cart");
-    let itemIsFound = false;
-    if (cartList == null) {
-        cartList = [];
-    } else {
-        cartList = JSON.parse(cartList);
-    }
-    for (let i = 0; i < cartList.length; i++) {
-        if (cartList[i].id == product.id) {
-            itemIsFound = true;
-            alert("Product already added to cart");
-            break;
+    if (currentUser) {
+        let cartList = localStorage.getItem("cart");
+        let itemIsFound = false;
+        if (cartList == null) {
+            cartList = [];
+        } else {
+            cartList = JSON.parse(cartList);
         }
-    }
-    if (!itemIsFound) {
-        cartList.push(product);
-        localStorage.setItem("cart", JSON.stringify(cartList));
-        alert("Product added to cart successfully");
+        for (let i = 0; i < cartList.length; i++) {
+            if (cartList[i].id == product.id) {
+                itemIsFound = true;
+                alert("Product already added to cart");
+                break;
+            }
+        }
+        if (!itemIsFound) {
+            cartList.push(product);
+            localStorage.setItem("cart", JSON.stringify(cartList));
+            alert("Product added to cart successfully");
+        }
+    } else {
+        alert("Please login to add product to cart");
     }
 }
