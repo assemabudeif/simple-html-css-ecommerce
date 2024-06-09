@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Website</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-<header>
-    <img src="images/logo.jpeg" alt="Logo">
-    <nav>
-        <a href="index.html" class="page-link">Home</a>
-        <a href="html/login.html" class="page-link">Login</a>
-        <a href="html/register.html" class="page-link">Register</a>
-        <a href="html/cart.html" class="page-link">Cart</a>
-    </nav>
-    <div class="search-bar">
-        <input type="text" placeholder="Search for products...">
-        <button>Search</button>
-    </div>
-</header>
-<main>
-    <h2>Categories</h2>
-    <div id="categories">
-        <a href="html/products.html">Electronics</a>
-        <a href="html/products.html">Clothing</a>
-        <a href="html/products.html">Books</a>
-        <a href="html/products.html">Home Appliances</a>
-    </div>
-    <h2>Products</h2>
-    <div id="product-list"></div>
-</main>
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2024 E-commerce Website</p>
-        <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
-        </div>
-    </div>
-</footer>
+    <meta name="description" content="E-commerce Website">
+    <meta name="keywords" content="E-commerce, Website, Products, Cart">
+    <meta name="author" content="ITI">
 
-<script>
-    for(var i = 0; i< 20; i++){
-        document.getElementById("product-list").innerHTML += ` <div class="product-item">
-            <img src="https://via.placeholder.com/150" alt="Product 1">
-            <h3>Product ${i + 1}</h3>
-            <p>Description for product 1</p>
-            <p>$10</p>
-            <button>Add to Cart</button>
-        </div>`
-    }
-</script>
+    <title>Simple E-commerce</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Fav Icpn -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+</head>
+
+<body>
+    <header>
+        <img src="images/logo.jpeg" alt="Logo">
+        <nav>
+            <a href="#" class="page-link">Home</a>
+            <a href="html/login.html" class="page-link">Login</a>
+            <a href="html/register.html" class="page-link">Register</a>
+            <a href="html/cart.html" class="page-link">Cart</a>
+        </nav>
+        <div class="search-bar">
+            <input id="searchValue" type="search" placeholder="Search for products...">
+            <button id="btnSearch">Search</button>
+        </div>
+    </header>
+    <main>
+        <h2>Categories</h2>
+        <div id="categories">
+        </div>
+        <h2>Products</h2>
+        <!-- Add Filter for products -->
+        <div id="filter">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="default-select">Default</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="name-desc">Name: Z to A</option>
+            </select>
+            <div id="product-list"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 E-commerce Website</p>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
 </body>
+
 </html>

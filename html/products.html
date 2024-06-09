@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Website</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-<header>
-   <h2>Electronics</h2>
-</header>
-<main>
-    <div id="product-list"></div>
-</main>
-<footer>
-    <div class="footer-content">
-        <p>&copy; 2024 E-commerce Website</p>
-        <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
-        </div>
-    </div>
-</footer>
+    <meta name="description" content="E-commerce Website">
+    <meta name="keywords" content="E-commerce, Website, Products, Cart">
+    <meta name="author" content="ITI">
 
-<script>
-    for(var i = 0; i< 20; i++){
-        document.getElementById("product-list").innerHTML += ` <div class="product-item">
-            <img src="https://via.placeholder.com/150" alt="Product 1">
-            <h3>Product ${i + 1}</h3>
-            <p>Description for product 1</p>
-            <p>$10</p>
-            <button>Add to Cart</button>
-        </div>`
-    }
-</script>
+    <title>Category Products</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Fav Icpn -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+</head>
+
+<body>
+    <header>
+        <h2 id="category-title"></h2>
+    </header>
+    <main>
+        <div id="product-list"></div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 E-commerce Website</p>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/products.js">
+    </script>
 </body>
+
 </html>
