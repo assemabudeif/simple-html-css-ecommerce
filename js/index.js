@@ -11,13 +11,12 @@ function getAllProducts() {
             for (const product of products) {
                 addProductItem(product);
             }
-        }
-        );
+        });
 }
 getAllProducts();
 
 /**
- * @param {*} product 
+ * @param {*} product
  * Add Product Item to the product list
  * Product Item contains Image, Title, Description, Price and Add to Cart Button
  * Add to Cart Button will add the product to the cart
@@ -86,7 +85,7 @@ function addCart(product) {
  * Search the product based on the search value
  * It will search the product based on the product title
  * If the product title contains the search value, it will show the product
- * If the product title does not contain the search value, it will hide the product 
+ * If the product title does not contain the search value, it will hide the product
  * */
 function searchProduct() {
     console.log("searchProduct");
