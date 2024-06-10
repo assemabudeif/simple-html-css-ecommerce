@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-commerce Website">
+    <meta name="keywords" content="E-commerce, Website, Products, Cart">
+    <meta name="author" content="ITI">
+
+    <title>Product Details</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Fav Icpn -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+
+    <style>
+        .product-detail {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-detail img {
+            height: 30vh;
+            border-radius: 10px;
+        }
+
+        .product-detail h2 {
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+
+        .product-detail p {
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .product-detail .price {
+            font-size: 1.5rem;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .quantity-control {
+            margin: 1rem 0;
+        }
+
+        .quantity-control label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .quantity-control input {
+            padding: 0.5rem;
+            width: 20%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .product-category {
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .product-category h2 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        #product-category-item {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #product-category-item:hover {
+            color: #d9534f;
+        }
+
+        #product-rate {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        #product-rate-number {
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Product Details</h1>
+    </header>
+    <main>
+        <div class="product-detail">
+            <img src="https://via.placeholder.com/300" alt="Product Image" id="product-image">
+            <h2 id="product-title">Product Title</h2>
+            <p id="product-description">Description for the product. This is a detailed description that gives the
+                customer more information
+                about the product.</p>
+            <p class="price" id="product-price">$25.00</p>
+            <!-- Add product rate number and count -->
+            <p id="product-rate">
+                Rating:
+                <span id="product-rate-number">
+                    4.5
+                </span>
+                <span id="product-rate-count">
+                    (10)
+                </span>
+            </p>
+
+            <!-- Add Product Category -->
+            <div class="product-category">
+                <h2>Product Category:</h2>
+                <a id="product-category-item" href="../html/products.html">
+                </a>
+            </div>
+            <div class="quantity-control">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="product-quantity" name="quantity" value="1" min="1">
+            </div>
+            <button class="cart-button" id="product-cart-button">Add to Cart</button>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Simple E-Commerce Website</p>
+            <div class="footer-links">
+                <a href="https://www.freeprivacypolicy.com/live/d214633d-3ea1-43c3-9e85-c39f7dad3376" target="_blank">
+                    Privacy Policy
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/product-details.js"></script>
+
+</body>
+
+</html>

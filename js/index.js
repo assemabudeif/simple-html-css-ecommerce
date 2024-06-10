@@ -40,31 +40,58 @@ getAllProducts();
  * If the product is added to the cart successfully, it will show an alert message
  */
 function addProductItem(product) {
+    /// <div class="product-item">
     let prductsList = document.getElementById("product-list");
     let productItemDiv = document.createElement("div");
     productItemDiv.className = "product-item";
+
+    /// <img src="product.image" alt="product.image">
     let productImage = document.createElement("img");
     productImage.src = product.image;
     productImage.alt = product.image;
     productItemDiv.appendChild(productImage);
+
+    /// <h3 class="product-title">product.title</h3>
     let productTitle = document.createElement("h3");
-    productTitle.innerText = product.title;
+    productTitle.innerHTML = product.title;
     productTitle.className = 'product-title';
     productItemDiv.appendChild(productTitle);
-    let productDescription = document.createElement("p");
-    productDescription.innerText = product.description;
-    productItemDiv.appendChild(productDescription);
+
+    /// <p class="product-description">product.description</p>
     let productPrice = document.createElement("p");
-    productPrice.innerText = product.price + "$";
+    productPrice.innerHTML = product.price + "$";
     productPrice.className = "product-price";
     productItemDiv.appendChild(productPrice);
-    let productButton = document.createElement("button");
-    productButton.innerText = "Add to Cart";
-    productButton.onclick = function () {
+
+    /// <div class="product-buttons"></div>
+    let productButtons = document.createElement("div");
+    productButtons.className = "product-buttons";
+
+    /// <button class="details-button">Show Details</button>
+    let productDetails = document.createElement("button");
+    productDetails.className = "details-button"
+    productDetails.innerHTML = "Show Details";
+    productDetails.onclick = function () {
+        showDetails(product);
+    }
+    productButtons.appendChild(productDetails);
+
+    /// <button class="cart-button">Add to Cart</button>
+    let productCart = document.createElement("button");
+    productCart.className = "cart-button"
+    productCart.innerHTML = "Add to Cart";
+    productCart.onclick = function () {
         addCart(product);
     }
-    productItemDiv.appendChild(productButton);
+    productButtons.appendChild(productCart);
+
+    productItemDiv.appendChild(productButtons);
     prductsList.appendChild(productItemDiv);
+}
+
+function showDetails(product) {
+    localStorage.setItem("product", JSON.stringify(product));
+    open("../html/product-details.html", "_self");
 }
 
 /**
@@ -75,29 +102,20 @@ function addProductItem(product) {
  * Cart is stored in the local storage
  * */
 function addCart(product) {
-    if (currentUser != null) {
-        let cartList = localStorage.getItem("cart");
-        let itemIsFound = false;
-        if (cartList == null) {
-            cartList = [];
-        } else {
-            cartList = JSON.parse(cartList);
-        }
-        for (let i = 0; i < cartList.length; i++) {
-            if (cartList[i].id == product.id) {
-                itemIsFound = true;
-                alert("Product already added to cart");
-                break;
-            }
-        }
-        if (!itemIsFound) {
-            cartList.push(product);
-            localStorage.setItem("cart", JSON.stringify(cartList));
-            alert("Product added to cart successfully");
-        }
-    } else {
-        alert("Please login to add product to cart");
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart == null) {
+        cart = [];
     }
+    let cartItem = cart.find(item => item.product.id == product.id);
+    if (cartItem) {
+        cartItem.quantity++;
+        alert(`This product is already in the cart. Quantity: ${cartItem.quantity}`);
+    } else {
+        cart.push({ product, quantity: 1 });
+        alert("Product added to cart successfully");
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+
 }
 
 /**
@@ -111,7 +129,7 @@ function searchProduct() {
     let searchValue = document.getElementById("searchValue").value;
     let products = document.getElementsByClassName("product-item");
     for (let i = 0; i < products.length; i++) {
-        let productTitle = products[i].getElementsByClassName("product-title")[0].innerText;
+        let productTitle = products[i].getElementsByClassName("product-title")[0].innerHTML;
         if (productTitle.includes(searchValue)) {
             products[i].style.display = "block";
         } else {
@@ -149,32 +167,32 @@ document.getElementById("sort").addEventListener("change", function () {
         case "price-asc":
             productsArray.sort(
                 function (a, b) {
-                    let aPrice = a.getElementsByClassName("product-price")[0].innerText;
-                    let bPrice = b.getElementsByClassName("product-price")[0].innerText;
+                    let aPrice = a.getElementsByClassName("product-price")[0].innerHTML;
+                    let bPrice = b.getElementsByClassName("product-price")[0].innerHTML;
                     return parseInt(aPrice) - parseInt(bPrice);
                 }
             );
             break;
         case "price-desc":
             productsArray.sort(function (a, b) {
-                let aPrice = a.getElementsByClassName("product-price")[0].innerText;
-                let bPrice = b.getElementsByClassName("product-price")[0].innerText;
+                let aPrice = a.getElementsByClassName("product-price")[0].innerHTML;
+                let bPrice = b.getElementsByClassName("product-price")[0].innerHTML;
                 return parseInt(bPrice) - parseInt(aPrice);
             }
             );
             break;
         case "name-asc":
             productsArray.sort(function (a, b) {
-                let aName = a.getElementsByClassName("product-title")[0].innerText;
-                let bName = b.getElementsByClassName("product-title")[0].innerText;
+                let aName = a.getElementsByClassName("product-title")[0].innerHTML;
+                let bName = b.getElementsByClassName("product-title")[0].innerHTML;
                 return aName.localeCompare(bName);
             }
             );
             break;
         case "name-desc":
             productsArray.sort(function (a, b) {
-                let aName = a.getElementsByClassName("product-title")[0].innerText;
-                let bName = b.getElementsByClassName("product-title")[0].innerText;
+                let aName = a.getElementsByClassName("product-title")[0].innerHTML;
+                let bName = b.getElementsByClassName("product-title")[0].innerHTML;
                 return bName.localeCompare(aName);
             }
             );
@@ -214,7 +232,7 @@ getAllCategories().then(data => {
     for (const category of data) {
         let link = document.createElement("a");
         link.href = "html/products.html";
-        link.innerText = category.toUpperCase();
+        link.innerHTML = category.toUpperCase();
         link.className = "category";
         link.onclick = function () {
             localStorage.setItem("category", category);

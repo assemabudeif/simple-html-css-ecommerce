@@ -29,10 +29,10 @@ function checkRegisterUserName(userNameFound) {
         registerUsernameValidation.innerHTML = "this username is used, please enter another";
         return false;
     } else if (!testkUserName(registerUsernameInput.value)) {
-        registerUsernameValidation.innerHTML = "Please Enter Valid Username like: (ahmed2@)";
+        registerUsernameValidation.innerHTML = "Please Enter Valid Username, valid username must start with small letter and contain at least 3 characters and can contain numbers and @ only.";
         return false;
     } else {
-        registerUsernameValidation = "";
+        registerUsernameValidation.innerHTML = "";
         return true;
     }
 }

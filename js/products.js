@@ -2,7 +2,7 @@ let category = localStorage.getItem("category");
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 let allProducts = [];
-document.getElementById("category-title").innerText = category.toUpperCase();
+document.getElementById("category-title").innerHTML = category.toUpperCase();
 
 function getCategoryProducts() {
     return fetch(`https://fakestoreapi.com/products/category/${category}`)
@@ -27,33 +27,59 @@ getCategoryProducts().then(data => {
  * If the product is added to the cart successfully, it will show an alert message
  */
 function addProductItem(product) {
+    /// <div class="product-item">
     let prductsList = document.getElementById("product-list");
     let productItemDiv = document.createElement("div");
     productItemDiv.className = "product-item";
+
+    /// <img src="product.image" alt="product.image">
     let productImage = document.createElement("img");
     productImage.src = product.image;
     productImage.alt = product.image;
     productItemDiv.appendChild(productImage);
+
+    /// <h3 class="product-title">product.title</h3>
     let productTitle = document.createElement("h3");
-    productTitle.innerText = product.title;
+    productTitle.innerHTML = product.title;
     productTitle.className = 'product-title';
     productItemDiv.appendChild(productTitle);
-    let productDescription = document.createElement("p");
-    productDescription.innerText = product.description;
-    productItemDiv.appendChild(productDescription);
+
+    /// <p class="product-description">product.description</p>
     let productPrice = document.createElement("p");
-    productPrice.innerText = product.price + "$";
+    productPrice.innerHTML = product.price + "$";
     productPrice.className = "product-price";
     productItemDiv.appendChild(productPrice);
-    let productButton = document.createElement("button");
-    productButton.innerText = "Add to Cart";
-    productButton.onclick = function () {
+
+    /// <div class="product-buttons"></div>
+    let productButtons = document.createElement("div");
+    productButtons.className = "product-buttons";
+
+    /// <button class="details-button">Show Details</button>
+    let productDetails = document.createElement("button");
+    productDetails.className = "details-button"
+    productDetails.innerHTML = "Show Details";
+    productDetails.onclick = function () {
+        showDetails(product);
+    }
+    productButtons.appendChild(productDetails);
+
+    /// <button class="cart-button">Add to Cart</button>
+    let productCart = document.createElement("button");
+    productCart.className = "cart-button"
+    productCart.innerHTML = "Add to Cart";
+    productCart.onclick = function () {
         addCart(product);
     }
-    productItemDiv.appendChild(productButton);
+    productButtons.appendChild(productCart);
+
+    productItemDiv.appendChild(productButtons);
     prductsList.appendChild(productItemDiv);
 }
 
+function showDetails(product) {
+    localStorage.setItem("product", JSON.stringify(product));
+    open("../html/product-details.html", "_self");
+}
 /**
  * @param {*} product
  * Add the product to the cart
