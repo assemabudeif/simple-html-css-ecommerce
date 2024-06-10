@@ -40,19 +40,24 @@ let productQuantityInput = document.getElementById("product-quantity");
 // Add to Cart Button Element
 let addToCartButton = document.getElementById("product-cart-button");
 addToCartButton.onclick = function () {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart == null) {
-        cart = [];
-    }
-    let cartItem = cart.find(item => item.product.id == product.id);
-    if (cartItem) {
-        cartItem.quantity += parseInt(productQuantityInput.value);
-        alert(`This product is already in the cart. Quantity: ${cartItem.quantity}`);
-    } else {
-        cart.push({ product, quantity: parseInt(productQuantityInput.value) });
-        alert("Product added to cart successfully");
+    let user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user != null) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (cart == null) {
+            cart = [];
+        }
+        let cartItem = cart.find(item => item.product.id == product.id);
+        if (cartItem) {
+            cartItem.quantity += parseInt(productQuantityInput.value);
+            alert(`This product is already in the cart. Quantity: ${cartItem.quantity}`);
+        } else {
+            cart.push({ product, quantity: parseInt(productQuantityInput.value) });
+            alert("Product added to cart successfully");
 
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        productQuantityInput.value = 1;
+    } else {
+        alert("Please login to add product to cart");
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    productQuantityInput.value = 1;
 }

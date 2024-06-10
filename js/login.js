@@ -25,7 +25,7 @@ function login() {
 
     let userModel = {
         "username": loginUsernameInput.value,
-        "password": loginPasswordInput
+        "password": loginPasswordInput.value,
     };
     localStorage.setItem("currentUser", JSON.stringify(userModel));
     loginForm.submit();
