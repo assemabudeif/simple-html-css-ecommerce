@@ -91,7 +91,7 @@ function addProductItem(product) {
 
 function showDetails(product) {
     localStorage.setItem("product", JSON.stringify(product));
-    open("/html/product-details.html", "_self");
+    open("./html/product-details.html", "_self");
 }
 
 /**
