@@ -102,19 +102,24 @@ function showDetails(product) {
  * Cart is stored in the local storage
  * */
 function addCart(product) {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart == null) {
-        cart = [];
-    }
-    let cartItem = cart.find(item => item.product.id == product.id);
-    if (cartItem) {
-        cartItem.quantity++;
-        alert(`This product is already in the cart. Quantity: ${cartItem.quantity}`);
+    if (currentUser) {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        if (cart == null) {
+            cart = [];
+        }
+        let cartItem = cart.find(item => item.product.id == product.id);
+        if (cartItem) {
+            cartItem.quantity++;
+            alert(`This product is already in the cart. Quantity: ${cartItem.quantity}`);
+        } else {
+            cart.push({ product, quantity: 1 });
+            alert("Product added to cart successfully");
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+
     } else {
-        cart.push({ product, quantity: 1 });
-        alert("Product added to cart successfully");
+        alert("Please login to add product to cart");
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
 
 }
 
