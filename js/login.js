@@ -32,14 +32,14 @@ function login() {
 }
 
 function checkLoginUserName() {
-    if (checkUserNameFounded()) {
+    if (checkUserNameNotFounded()) {
         loginUsernameValidation.innerHTML = "not found username, please enter another, or register";
         return false;
     } else if (!testkUserName(loginUsernameInput.value)) {
-        loginUsernameValidation.innerHTML = "Please Enter Valid Username like: (ahmed2@)";
+        loginUsernameValidation.innerHTML = "Please Enter Valid Username, valid username must start with small letter and contain at least 3 characters and can contain numbers and @only.";
         return false;
     } else {
-        registerUsernameValidation = "";
+        loginUsernameValidation = "";
         return true;
     }
 }
@@ -65,7 +65,7 @@ function checkLoginPassword() {
     }
 }
 
-function checkUserNameFounded() {
+function checkUserNameNotFounded() {
     let notFoundUserName = true;
     for (const user of users) {
         if (user.username === loginUsernameInput.value) {
